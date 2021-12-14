@@ -2,8 +2,19 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BeautySalon"
-             StartupUri="MainWindow.xaml">
+             StartupUri="AutorizationWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="secondColor" 
+                         Color="#FFE1E4FF"/>
+        <SolidColorBrush x:Key="thirdColor"
+                         Color="#FFFF4A6D"/>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily"
+            Value="Tahoma"/>
+        </Style>
+        <Style TargetType="{x:Type Page}">
+            <Setter Property="FontFamily"
+            Value="Tahoma"/>
+        </Style>
     </Application.Resources>
 </Application>

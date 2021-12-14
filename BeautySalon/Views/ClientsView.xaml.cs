@@ -13,16 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BeautySalon
+namespace BeautySalon.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ClientsView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ClientsView : Page
     {
-        public MainWindow()
+        BeautySalonEntities context;
+        public ClientsView()
         {
             InitializeComponent();
+            Style = (Style)FindResource(typeof(Page));
+            context = new BeautySalonEntities();
+            clientsDataGrid.ItemsSource = context.Client.ToList();
         }
     }
 }
