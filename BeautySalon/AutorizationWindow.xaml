@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:BeautySalon"
         mc:Ignorable="d"
         Title="Салон красоты Мордочка" 
-        Height="700" 
-        Width="1200"
+        Height="800" 
+        Width="1400"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         Icon="/Resources/beauty_logo.ico">
@@ -17,9 +17,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="0">
+                    Grid.Row="0"
+                    VerticalAlignment="Center"
+                    >
             <Image Source="/Resources/beauty_logo.ico"
-                   Margin="200,0,0,0"/>
+                   Margin="330,0,0,0"/>
             <TextBlock Text="Салон красоты Мордочка"
                        FontSize="40"
                        VerticalAlignment="Center"
@@ -32,7 +34,7 @@
                     Width="80"
                     FontSize="20"
                     VerticalAlignment="Center"
-                    Margin="200,10,0,0"
+                    Margin="300,10,0,0"
                     Background="White"
                     Foreground="{StaticResource thirdColor}"
                     FontWeight="Heavy"

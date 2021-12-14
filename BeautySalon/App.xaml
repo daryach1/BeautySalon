@@ -16,5 +16,33 @@
             <Setter Property="FontFamily"
             Value="Tahoma"/>
         </Style>
+        <Style x:Key="forComboBox" 
+               TargetType="ComboBox">
+            <Setter Property="Height"
+                    Value="25"/>
+            <Setter Property="Width"
+                    Value="150"/>
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center"/>
+            <Setter Property="FontSize"
+                    Value="18"/>
+            <Setter Property="IsEditable"
+                    Value="True"/>
+            <Setter Property="Margin"
+                    Value="10,0,0,0"/>
+        </Style>
+        <Style x:Key="forTextBox" 
+               TargetType="TextBox">
+            <Setter Property="Height"
+                    Value="25"/>
+            <Setter Property="Width"
+                    Value="150"/>
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center"/>
+            <Setter Property="FontSize"
+                    Value="18"/>
+            <Setter Property="Margin"
+                    Value="10,0,0,0"/>
+        </Style>
     </Application.Resources>
 </Application>

@@ -27,6 +27,42 @@ namespace BeautySalon.Views
             Style = (Style)FindResource(typeof(Page));
             context = new BeautySalonEntities();
             clientsDataGrid.ItemsSource = context.Client.ToList();
+            genderComboBox.ItemsSource = context.Gender.ToList();
+        }
+
+        /// <summary>
+        /// Метод для сортировки и поиска данных в реальном времени
+        /// </summary>
+        private void SearchAndSortingTable()
+        {
+            if (genderComboBox.SelectedItem == null)
+            {
+                return;
+            }
+            var currentGender = (Gender)genderComboBox.SelectedItem;
+            List<Client> clients = context.Client.ToList();
+            clients = clients.Where(x => x.GenderCode == currentGender.Code).ToList();
+            clientsDataGrid.ItemsSource = clients;
+            
+            
+        }
+
+        private void SearchTable() 
+        {
+            string searchFullName = fullNameTextBox.Text;
+            List<Client> clients = context.Client.ToList();
+            clients = clients.Where(x => x.LastName.ToLower().Contains(searchFullName.ToLower())).ToList();
+            clientsDataGrid.ItemsSource = clients;
+        }
+
+        private void fullNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchTable();
+        }
+
+        private void genderComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SearchAndSortingTable();
         }
     }
 }

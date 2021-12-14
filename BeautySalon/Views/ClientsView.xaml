@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BeautySalon.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1000"
       Title="ClientsView"
       Background="White">
 
@@ -24,7 +24,33 @@
         <StackPanel Orientation="Horizontal"
                     Grid.Row="1"
                     Background="{StaticResource secondColor}">
-            
+            <TextBlock Text="ФИО:"
+                       VerticalAlignment="Center"
+                       FontSize="18"
+                       Margin="10,0,0,0"/>
+            <TextBox x:Name="fullNameTextBox"
+                     Style="{StaticResource forTextBox}"
+                     TextChanged="fullNameTextBox_TextChanged"/>
+            <TextBlock Text="Email:"
+                       VerticalAlignment="Center"
+                       FontSize="18"
+                       Margin="10,0,0,0"/>
+            <TextBox x:Name="emailTextBox"
+                     Style="{StaticResource forTextBox}"/>
+            <TextBlock Text="Телефон:"
+                       VerticalAlignment="Center"
+                       FontSize="18"
+                       Margin="10,0,0,0"/>
+            <TextBox x:Name="phoneTextBox"
+                     Style="{StaticResource forTextBox}"/>
+            <TextBlock Text="Пол:"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       Margin="10,0,0,0"/>
+            <ComboBox x:Name="genderComboBox"
+                      DisplayMemberPath="Name"
+                      Style="{StaticResource forComboBox}"
+                      SelectionChanged="genderComboBox_SelectionChanged"/>
         </StackPanel>
         <DataGrid Grid.Row="2"
                   x:Name="clientsDataGrid"
@@ -38,11 +64,14 @@
                                     Binding="{Binding ID}"
                                     Width="40"/>
                 <DataGridTextColumn Header="Фамилия" 
-                                    Binding="{Binding LastName}"/>
+                                    Binding="{Binding LastName}"
+                                    Width="110"/>
                 <DataGridTextColumn Header="Имя" 
-                                    Binding="{Binding FirstName}"/>
+                                    Binding="{Binding FirstName}"
+                                    Width="100"/>
                 <DataGridTextColumn Header="Отчество" 
-                                    Binding="{Binding Patronymic}"/>
+                                    Binding="{Binding Patronymic}"
+                                    Width="130"/>
                 <DataGridTextColumn Header="Дата рождения" 
                                     Binding="{Binding Birthday}"/>
                 <DataGridTextColumn Header="Дата регистрации" 
@@ -53,7 +82,8 @@
                                     Binding="{Binding Phone}"/>
                 <DataGridTextColumn Header="Пол" 
                                     Binding="{Binding Gender.Name}"/>
-                <DataGridTemplateColumn Header="Посещения">
+                <DataGridTemplateColumn Header="Посещения"
+                                        Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="ShowVisits"
