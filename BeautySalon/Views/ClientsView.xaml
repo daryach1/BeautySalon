@@ -131,7 +131,8 @@
                             <Button x:Name="editButton"
                                     Background="{StaticResource thirdColor}"
                                     Content="Редактировать"
-                                    Foreground="White"/>
+                                    Foreground="White"
+                                    Click="editButton_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

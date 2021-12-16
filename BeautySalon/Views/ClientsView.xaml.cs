@@ -127,5 +127,13 @@ namespace BeautySalon.Views
             else 
                 FrameService.MainFrame.Navigate(new ClientVisitsView(clientServices));
         }
+
+        private void editButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button editButton = (Button)sender;
+            var currentClient = editButton.DataContext as Client;
+            FrameService.MainFrame.Navigate(new InformationClientView(context, currentClient));
+            
+        }
     }
 }

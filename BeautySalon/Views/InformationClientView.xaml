@@ -23,7 +23,7 @@
                            Style="{StaticResource forTextBlock}"/>
                 <TextBox x:Name="lastNameTextBox"
                          Height="25"
-                         Width="200"
+                         Width="250"
                          Margin="10,0,0,0"
                          Text="{Binding LastName}"
                          FontSize="16"
@@ -36,7 +36,7 @@
                            Style="{StaticResource forTextBlock}"/>
                 <TextBox x:Name="firstNameTextBox"
                          Height="25"
-                         Width="200"
+                         Width="250"
                          Margin="45,0,0,0"
                          Text="{Binding FirstName}"
                          FontSize="16"
@@ -48,11 +48,59 @@
                            Style="{StaticResource forTextBlock}"/>
                 <TextBox x:Name="patronymicTextBox"
                          Height="25"
-                         Width="200"
+                         Width="250"
                          Margin="8,0,0,0"
                          Text="{Binding Patronymic}"
                          FontSize="16"
                          VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,10,0,0">
+                <TextBlock Text="Дата рождения: "
+                           Style="{StaticResource forTextBlock}"/>
+                <DatePicker SelectedDate="{Binding Birthday}"
+                         Height="25"
+                         Width="200"
+                         Margin="12,0,0,0"
+                         VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,10,0,0">
+                <TextBlock Text="Email: "
+                           Style="{StaticResource forTextBlock}"/>
+                <TextBox x:Name="emailTextBox"
+                         Height="25"
+                         Width="250"
+                         Margin="38,0,0,0"
+                         Text="{Binding Email}"
+                         FontSize="16"
+                         VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,10,0,0">
+                <TextBlock Text="Телефон: "
+                           Style="{StaticResource forTextBlock}"/>
+                <TextBox x:Name="phoneTextBox"
+                         Height="25"
+                         Width="250"
+                         Margin="13,0,0,0"
+                         Text="{Binding Email}"
+                         FontSize="16"
+                         VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,10,0,0">
+                <TextBlock Text="Пол: "
+                           Style="{StaticResource forTextBlock}"/>
+                <ComboBox x:Name="genderComboBox"
+                         Height="25"
+                         Width="250"
+                         Margin="47,0,0,0"
+                         FontSize="16"
+                         VerticalContentAlignment="Center"
+                         IsEditable="True"
+                          DisplayMemberPath="Name"
+                          SelectedItem="{Binding Gender}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -20,10 +20,14 @@ namespace BeautySalon.Views
     /// </summary>
     public partial class InformationClientView : Page
     {
-        public InformationClientView()
+        BeautySalonEntities context;
+        public InformationClientView(BeautySalonEntities context, Client client)
         {
             InitializeComponent();
             Style = (Style)FindResource(typeof(Page));
+            this.context = context;
+            this.DataContext = client;
+            genderComboBox.ItemsSource = context.Gender.ToList();
         }
     }
 }
