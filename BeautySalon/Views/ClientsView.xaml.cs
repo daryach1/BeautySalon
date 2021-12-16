@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BeautySalon.Services;
 
 namespace BeautySalon.Views
 {
@@ -35,34 +36,96 @@ namespace BeautySalon.Views
         /// </summary>
         private void SearchAndSortingTable()
         {
+            var currentGender = (Gender)genderComboBox.SelectedItem;
+            string searchFullName = fullNameTextBox.Text;
+            string searchEmail = emailTextBox.Text;
+            string searchPhone = phoneTextBox.Text;
+            List<Client> clients = context.Client.ToList();
             if (genderComboBox.SelectedItem == null)
             {
-                return;
+                clients = clients.Where(x => x.LastName.ToLower().Contains(searchFullName.ToLower())).ToList();
+                clients = clients.Where(x => x.Email.ToLower().Contains(searchEmail.ToLower())).ToList();
+                clients = clients.Where(x => x.Phone.ToLower().Contains(searchPhone.ToLower())).ToList();
+                clientsDataGrid.ItemsSource = clients;
             }
-            var currentGender = (Gender)genderComboBox.SelectedItem;
-            List<Client> clients = context.Client.ToList();
-            clients = clients.Where(x => x.GenderCode == currentGender.Code).ToList();
-            clientsDataGrid.ItemsSource = clients;
-            
+            else
+            {
+                clients = clients.Where(x => x.GenderCode == currentGender.Code).ToList();
+                clients = clients.Where(x => x.Email.ToLower().Contains(searchEmail.ToLower())).ToList();
+                clients = clients.Where(x => x.Phone.ToLower().Contains(searchPhone.ToLower())).ToList();
+                clients = clients.Where(x => x.LastName.ToLower().Contains(searchFullName.ToLower())).ToList();  
+                clientsDataGrid.ItemsSource = clients;
+            }
             
         }
 
-        private void SearchTable() 
+        /// <summary>
+        /// Метод для очистки данных полей поиска
+        /// </summary>
+        private void ClearValues() 
         {
-            string searchFullName = fullNameTextBox.Text;
-            List<Client> clients = context.Client.ToList();
-            clients = clients.Where(x => x.LastName.ToLower().Contains(searchFullName.ToLower())).ToList();
-            clientsDataGrid.ItemsSource = clients;
+            fullNameTextBox.Text = string.Empty;
+            emailTextBox.Text = string.Empty;
+            phoneTextBox.Text = string.Empty;
+            genderComboBox.SelectedItem = null;
         }
 
         private void fullNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SearchTable();
+            SearchAndSortingTable();
         }
 
         private void genderComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SearchAndSortingTable();
+        }
+
+        private void emailTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchAndSortingTable();
+        }
+
+        private void phoneTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchAndSortingTable();
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var row = (Client)clientsDataGrid.SelectedItem;
+            if (row == null)
+                MessageBox.Show("Выберите клиента для удаления.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            else
+            { 
+                int idClient = row.ID;
+                List<ClientService> clientServices = context.ClientService.ToList();
+                clientServices = clientServices.Where(x => x.ClientID == idClient).ToList();
+                if (clientServices.Count != 0)
+                    MessageBox.Show("У данного клиента имеются посещения. Удаление запрещено.", "Ошибка удаления", MessageBoxButton.OK, MessageBoxImage.Error);
+                else
+                {
+                    MessageBoxResult result = MessageBox.Show("Вы точно хотите удалить данного клиента?", "Удаление клиента", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        context.Client.Remove(row);
+                        context.SaveChanges();
+                        clientsDataGrid.ItemsSource = context.Client.ToList();
+                    }
+                }
+            }
+            
+        }
+
+        private void showVisitsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var row = (Client)clientsDataGrid.SelectedItem;
+            int idClient = row.ID;
+            List<ClientService> clientServices = context.ClientService.ToList();
+            clientServices = clientServices.Where(x => x.ClientID == idClient).ToList();
+            if (clientServices.Count == 0)
+                MessageBox.Show("У данного клиента посещений нет", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+            else 
+                FrameService.MainFrame.Navigate(new ClientVisitsView(clientServices));
         }
     }
 }

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BeautySalon.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1000"
+      d:DesignHeight="450" d:DesignWidth="1400"
       Title="ClientsView"
       Background="White">
 
@@ -36,13 +36,15 @@
                        FontSize="18"
                        Margin="10,0,0,0"/>
             <TextBox x:Name="emailTextBox"
-                     Style="{StaticResource forTextBox}"/>
+                     Style="{StaticResource forTextBox}"
+                     TextChanged="emailTextBox_TextChanged"/>
             <TextBlock Text="Телефон:"
                        VerticalAlignment="Center"
                        FontSize="18"
                        Margin="10,0,0,0"/>
             <TextBox x:Name="phoneTextBox"
-                     Style="{StaticResource forTextBox}"/>
+                     Style="{StaticResource forTextBox}"
+                     TextChanged="phoneTextBox_TextChanged"/>
             <TextBlock Text="Пол:"
                        VerticalAlignment="Center"
                        FontSize="20"
@@ -51,6 +53,31 @@
                       DisplayMemberPath="Name"
                       Style="{StaticResource forComboBox}"
                       SelectionChanged="genderComboBox_SelectionChanged"/>
+            <Button x:Name="allButton"
+                    Content="Все"
+                    Height="25"
+                    Width="60"
+                    FontSize="16"
+                    VerticalContentAlignment="Center"
+                    Background="White"
+                    Margin="10,0,0,0"/>
+            <Button x:Name="addButton"
+                    Content="Добавить"
+                    Height="25"
+                    Width="100"
+                    FontSize="16"
+                    VerticalContentAlignment="Center"
+                    Background="White"
+                    Margin="200,0,0,0"/>
+            <Button x:Name="deleteButton"
+                    Content="Удалить"
+                    Height="25"
+                    Width="100"
+                    FontSize="16"
+                    VerticalContentAlignment="Center"
+                    Background="White"
+                    Margin="10,0,0,0"
+                    Click="deleteButton_Click"/>
         </StackPanel>
         <DataGrid Grid.Row="2"
                   x:Name="clientsDataGrid"
@@ -86,14 +113,25 @@
                                         Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="ShowVisits"
-                                    Background="{StaticResource thirdColor}">
+                            <Button x:Name="showVisitsButton"
+                                    Background="{StaticResource thirdColor}"
+                                    Click="showVisitsButton_Click">
                                 <Button.Content>
                                     <TextBlock Text="Показать посещения"
                                                TextWrapping="Wrap"
                                                Foreground="White"/>
                                 </Button.Content>
                             </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Редактирование">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="editButton"
+                                    Background="{StaticResource thirdColor}"
+                                    Content="Редактировать"
+                                    Foreground="White"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

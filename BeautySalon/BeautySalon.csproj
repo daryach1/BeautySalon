@@ -120,6 +120,12 @@
     <Compile Include="Views\ClientsView.xaml.cs">
       <DependentUpon>ClientsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ClientVisitsView.xaml.cs">
+      <DependentUpon>ClientVisitsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InformationClientView.xaml.cs">
+      <DependentUpon>InformationClientView.xaml</DependentUpon>
+    </Compile>
     <Page Include="AutorizationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -133,6 +139,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ClientsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClientVisitsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InformationClientView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
