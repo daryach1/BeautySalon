@@ -20,7 +20,7 @@ namespace BeautySalon.Views
     /// </summary>
     public partial class ClientVisitsView : Page
     {
-
+        ClientService clientService;
         public ClientVisitsView(List<ClientService> clientServices)
         {
             InitializeComponent();

@@ -104,7 +104,7 @@ namespace BeautySalon.Views
                     MessageBox.Show("У данного клиента имеются посещения. Удаление запрещено.", "Ошибка удаления", MessageBoxButton.OK, MessageBoxImage.Error);
                 else
                 {
-                    MessageBoxResult result = MessageBox.Show("Вы точно хотите удалить данного клиента?", "Удаление клиента", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить данного клиента?", "Удаление клиента", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     if (result == MessageBoxResult.Yes)
                     {
                         context.Client.Remove(row);
@@ -134,6 +134,13 @@ namespace BeautySalon.Views
             var currentClient = editButton.DataContext as Client;
             FrameService.MainFrame.Navigate(new InformationClientView(context, currentClient));
             
+        }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            var newClient = new Client();
+            context.Client.Add(newClient);
+            FrameService.MainFrame.Navigate(new InformationClientView(context, newClient));
         }
     }
 }

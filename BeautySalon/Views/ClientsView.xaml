@@ -68,7 +68,8 @@
                     FontSize="16"
                     VerticalContentAlignment="Center"
                     Background="White"
-                    Margin="200,0,0,0"/>
+                    Margin="200,0,0,0"
+                    Click="addButton_Click"/>
             <Button x:Name="deleteButton"
                     Content="Удалить"
                     Height="25"
