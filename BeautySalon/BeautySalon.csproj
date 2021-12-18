@@ -113,7 +113,6 @@
     <Compile Include="ServicePhoto.cs">
       <DependentUpon>BeautySalonModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\FrameService.cs" />
     <Compile Include="Tag.cs">
       <DependentUpon>BeautySalonModel.tt</DependentUpon>

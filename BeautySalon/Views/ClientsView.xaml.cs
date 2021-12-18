@@ -142,5 +142,11 @@ namespace BeautySalon.Views
             context.Client.Add(newClient);
             FrameService.MainFrame.Navigate(new InformationClientView(context, newClient));
         }
+
+        private void allButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearValues();
+            clientsDataGrid.ItemsSource = context.Client.ToList();
+        }
     }
 }

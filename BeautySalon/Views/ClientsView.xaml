@@ -60,7 +60,7 @@
                     FontSize="16"
                     VerticalContentAlignment="Center"
                     Background="White"
-                    Margin="10,0,0,0"/>
+                    Margin="10,0,0,0" Click="allButton_Click"/>
             <Button x:Name="addButton"
                     Content="Добавить"
                     Height="25"
