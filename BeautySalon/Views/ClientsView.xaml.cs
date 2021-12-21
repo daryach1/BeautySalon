@@ -120,7 +120,7 @@ namespace BeautySalon.Views
         {
             var row = (Client)clientsDataGrid.SelectedItem;
             int idClient = row.ID;
-            List<ClientService> clientServices = context.ClientService.ToList();
+            List<ClientService> clientServices = context.ClientService.ToList(); 
             clientServices = clientServices.Where(x => x.ClientID == idClient).ToList();
             if (clientServices.Count == 0)
                 MessageBox.Show("У данного клиента посещений нет", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
