@@ -101,13 +101,13 @@
                                     Binding="{Binding Patronymic}"
                                     Width="130"/>
                 <DataGridTextColumn Header="Дата рождения" 
-                                    Binding="{Binding Birthday}"/>
+                                    Binding="{Binding Birthday, StringFormat={}{0:dd.MM.yyyy}}"/>
                 <DataGridTextColumn Header="Дата регистрации" 
-                                    Binding="{Binding RegistrationDate}"/>
+                                    Binding="{Binding RegistrationDate, StringFormat={}{0:dd.MM.yyyy}}"/>
                 <DataGridTextColumn Header="Email" 
                                     Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Телефон" 
-                                    Binding="{Binding Phone}"/>
+                                    Binding="{Binding Phone, StringFormat={}+{0}}"/>
                 <DataGridTextColumn Header="Пол" 
                                     Binding="{Binding Gender.Name}"/>
                 <DataGridTemplateColumn Header="Посещения"
